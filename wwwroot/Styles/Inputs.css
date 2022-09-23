@@ -1,0 +1,82 @@
+﻿
+.btn {
+    color: #fff;
+    background-color: #5e72e4;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    user-select: none;
+    position: relative;
+    border: 1px solid transparent;
+    overflow: hidden;
+    width: 200px;
+    height: 50px;
+    transition: background-color 1s;
+}
+.btn:not(:disabled) {
+    cursor: pointer;
+}
+.btn:focus {
+    background-color: #536a89;
+    border-color: #4e6381;
+    -webkit-box-shadow: 0 0 0 0.2rem rgb(122, 144, 174 / 50%);
+    box-shadow: 0 0 0 0.2rem rgb(122, 144, 174 / 50%);
+}
+.btn .l-loader-small {
+    margin: 10px;
+}
+.btn:disabled {
+    background-color: #536a89;
+}
+
+/*.ink styles - the elements which will create the ripple effect. The size and position of these elements will be set by the JS code. Initially these elements will be scaled down to 0% and later animated to large fading circles on user click.*/
+.btn .ink {
+    display: block;
+    position: absolute;
+    background: hsl(180, 40%, 80%);
+    border-radius: 100%;
+    transform: scale(0);
+}
+/*animation effect*/
+.ink.animate {animation: ripple 0.65s linear;}
+@keyframes ripple {
+    /*scale the element to 250% to safely cover the entire link and fade it out*/
+    100% {opacity: 0; transform: scale(2.5);}
+}
+.btn-green {
+    color: #fff;
+    background-color: #58b472;
+}
+.btn-green:focus {
+    background-color: #53896a;
+    border-color: #4e8163;
+}
+.btn-green:disabled {
+    background-color: #53896a;
+}
+.btn-red {
+    color: #fff;
+    background-color: #b45272;
+}
+.btn-red:focus {
+    background-color: #89536a;
+    border-color: #814e63;
+}
+.btn-red:disabled {
+    background-color: #89536a;
+}
+.btn-yellow {
+    color: #000;
+    background-color: #d4d472;
+}
+.btn-yellow:focus {
+    background-color: #89896a;
+    border-color: #818163;
+}
+.btn-yellow:disabled {
+    background-color: #89896a;
+}

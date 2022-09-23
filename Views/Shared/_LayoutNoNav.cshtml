@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @RenderSection("Styles",false/*required*/)
+
+    <script src="@Url.Content("~/Scripts/jquery-3.4.1.min.js")"></script>
+    @RenderSection("Scripts",false/*required*/)
+</head>
+
+<body>
+<section id="notif_main_div">
+
+</section>
+
+<section id="content">
+    @RenderBody()
+</section>
+
+</body>
+</html>

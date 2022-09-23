@@ -1,0 +1,99 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.HttpOverrides" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.13">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.13">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="MySql.Data" Version="8.0.28" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.4" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.2-mauipre.1.22054.8" />
+    <PackageReference Include="System.Management" Version="6.0.2-mauipre.1.22054.8" />
+    <PackageReference Include="System.Runtime.Caching" Version="6.0.2-mauipre.1.22054.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.28.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.9.9\Assemblies\v4.5\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.9.9\Assemblies\v4.5\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.9.9\Assemblies\v4.5\MySql.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\icons\bus.svg" />
+    <None Include="wwwroot\Images\icons\bus_stop.svg" />
+    <None Include="wwwroot\Images\icons\delay.svg" />
+    <None Include="wwwroot\Images\icons\finish.svg" />
+    <None Include="wwwroot\Images\icons\home.svg" />
+    <None Include="wwwroot\Images\icons\id.svg" />
+    <None Include="wwwroot\Images\icons\now.svg" />
+    <None Include="wwwroot\Images\icons\right-arrow.png" />
+    <None Include="wwwroot\Images\icons\snow.svg" />
+    <None Include="wwwroot\Images\icons\start.svg" />
+    <None Include="wwwroot\Images\notification\close.svg" />
+    <None Include="wwwroot\Images\notification\error.svg" />
+    <None Include="wwwroot\Images\notification\info.svg" />
+    <None Include="wwwroot\Images\notification\normal.svg" />
+    <None Include="wwwroot\Images\notification\success.svg" />
+    <None Include="wwwroot\Images\notification\warning.svg" />
+    <None Include="wwwroot\Styles\bootstrap-theme.css" />
+    <None Include="wwwroot\Styles\bootstrap-theme.css.map" />
+    <None Include="wwwroot\Styles\bootstrap-theme.min.css" />
+    <None Include="wwwroot\Styles\bootstrap-theme.min.css.map" />
+    <None Include="wwwroot\Styles\bootstrap.css" />
+    <None Include="wwwroot\Styles\bootstrap.css.map" />
+    <None Include="wwwroot\Styles\bootstrap.min.css" />
+    <None Include="wwwroot\Styles\bootstrap.min.css.map" />
+    <None Include="wwwroot\Styles\Form.css" />
+    <None Include="wwwroot\Styles\Inputs.css" />
+    <None Include="wwwroot\Styles\Loader.css" />
+    <None Include="wwwroot\Styles\Main.css" />
+    <None Include="wwwroot\Styles\Navigation.css" />
+    <None Include="wwwroot\Styles\Notifications.css" />
+    <None Include="wwwroot\Styles\Tabs.css" />
+    <None Include="wwwroot\Styles\Vehicle.css" />
+    <None Include="wwwroot\Scripts\DepartTables.js" />
+    <None Include="wwwroot\Scripts\Frameworks\bootstrap.js" />
+    <None Include="wwwroot\Scripts\Frameworks\bootstrap.min.js" />
+    <None Include="wwwroot\Scripts\Frameworks\jquery-3.4.1.intellisense.js" />
+    <None Include="wwwroot\Scripts\Frameworks\jquery-3.4.1.js" />
+    <None Include="wwwroot\Scripts\Frameworks\jquery-3.4.1.min.js" />
+    <None Include="wwwroot\Scripts\Frameworks\jquery-3.4.1.min.map" />
+    <None Include="wwwroot\Scripts\Frameworks\jquery-3.4.1.slim.js" />
+    <None Include="wwwroot\Scripts\Frameworks\jquery-3.4.1.slim.min.js" />
+    <None Include="wwwroot\Scripts\Frameworks\jquery-3.4.1.slim.min.map" />
+    <None Include="wwwroot\Scripts\Frameworks\jquery.validate-vsdoc.js" />
+    <None Include="wwwroot\Scripts\Frameworks\jquery.validate.js" />
+    <None Include="wwwroot\Scripts\Frameworks\jquery.validate.min.js" />
+    <None Include="wwwroot\Scripts\Frameworks\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\Scripts\Frameworks\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\Scripts\Frameworks\modernizr-2.8.3.js" />
+    <None Include="wwwroot\Scripts\Inputs.js" />
+    <None Include="wwwroot\Scripts\Main.js" />
+    <None Include="wwwroot\Scripts\Navigation.js" />
+    <None Include="wwwroot\Scripts\Notification.js" />
+    <None Include="wwwroot\Scripts\Popup.js" />
+    <None Include="wwwroot\Scripts\Tabs.js" />
+    <None Include="wwwroot\Scripts\Tooltip.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\site.css" />
+  </ItemGroup>
+
+</Project>
