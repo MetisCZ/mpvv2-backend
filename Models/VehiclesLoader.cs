@@ -96,7 +96,7 @@ namespace mpvv2.Models
             string query =
                 "SELECT v.id,COUNT(d.id) AS count, v.long_reg_num, v.reg_num,c.name AS carrier_name,v.manufac_year,m.name AS manufacturer_name, " +
                 "u.name AS vehicle_type,v.air_condition,v.last_seen,v.was_in_last,v.was_in_count"+
-                " FROM vehicle v LEFT JOIN depart_odis d ON (v.ID = d.id_veh) LEFT JOIN veh_up_type u ON (u.id = v.id_vut)" +
+                " FROM vehicle v LEFT JOIN depart d ON (v.ID = d.id_veh) LEFT JOIN veh_up_type u ON (u.id = v.id_vut)" +
                 " INNER JOIN veh_type t ON(t.id=u.id_vet) INNER JOIN manufacturer m ON (m.id = t.id_man)" +
                 " LEFT JOIN depot e ON (e.id = v.id_dep) INNER JOIN carrier c ON (e.id_car = c.id)"+
                 whereQuery+

@@ -105,7 +105,7 @@ namespace mpvv2.Models
                 "v.manufac_year,v.air_condition, d.line, d.start_date AS s_date, (SELECT s.name FROM stop s WHERE s.id = d.final_station) AS final_station,"+
                 "d.delay,(SELECT s.name FROM stop s WHERE s.id = d.last_station) AS last_station,"+
                 "(SELECT s.name FROM stop s WHERE s.id = d.start_station) AS start_station, d.route, v.id AS id_veh, d.was_in,d.act_date AS a_date"+
-                " FROM depart_odis d INNER JOIN vehicle v ON (v.id = d.id_veh) LEFT JOIN veh_up_type u ON (u.id = v.id_vut)"+
+                " FROM depart d INNER JOIN vehicle v ON (v.id = d.id_veh) LEFT JOIN veh_up_type u ON (u.id = v.id_vut)"+
                 " INNER JOIN veh_type t ON(t.id=u.id_vet) INNER JOIN manufacturer m ON (m.id = t.id_man) LEFT JOIN depot e ON (e.id = v.id_dep)"+
                 " INNER JOIN carrier c ON (e.id_car = c.id)"+
                 whereQuery+

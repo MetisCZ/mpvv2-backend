@@ -77,7 +77,7 @@ namespace mpvv2.Models
                 return null;
             using (var db = new Database())
             {
-                string sql = "SELECT line FROM depart_odis WHERE line LIKE \"%" + str +
+                string sql = "SELECT line FROM depart WHERE line LIKE \"%" + str +
                              "%\" GROUP BY line ORDER BY line LIMIT 7";
                 Dictionary<string, dynamic> parameters = new Dictionary<string, dynamic>();
                 var list = db.Select(sql, parameters);

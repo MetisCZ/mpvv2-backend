@@ -21,8 +21,7 @@ namespace mpvv2.DbModels
         public virtual DbSet<CarrierNameHistory> CarrierNameHistories { get; set; }
         public virtual DbSet<CarrierUrl> CarrierUrls { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
-        public virtual DbSet<DepartOdis> DepartOdis { get; set; }
-        public virtual DbSet<DepartPid> DepartPids { get; set; }
+        public virtual DbSet<Depart> Depart { get; set; }
         public virtual DbSet<Depot> Depots { get; set; }
         public virtual DbSet<DepotForCarrierList> DepotForCarrierLists { get; set; }
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
@@ -197,9 +196,9 @@ namespace mpvv2.DbModels
                     .HasColumnName("name");
             });
 
-            modelBuilder.Entity<DepartOdis>(entity =>
+            modelBuilder.Entity<Depart>(entity =>
             {
-                entity.ToTable("depart_odis");
+                entity.ToTable("depart");
 
                 entity.HasIndex(e => e.IdVeh2, "fk_dep_veh2");
 
@@ -269,82 +268,21 @@ namespace mpvv2.DbModels
                 entity.Property(e => e.WasIn).HasColumnName("was_in");
 
                 entity.HasOne(d => d.IdVehNavigation)
-                    .WithMany(p => p.DepartOdisIdVehNavigations)
+                    .WithMany(p => p.DepartIdVehNavigations)
                     .HasForeignKey(d => d.IdVeh)
                     .HasConstraintName("fk_dep_veh");
 
                 entity.HasOne(d => d.IdVeh2Navigation)
-                    .WithMany(p => p.DepartOdisIdVeh2Navigations)
+                    .WithMany(p => p.DepartIdVeh2Navigations)
                     .HasForeignKey(d => d.IdVeh2)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("fk_dep_veh2");
 
                 entity.HasOne(d => d.IdVeh3Navigation)
-                    .WithMany(p => p.DepartOdisIdVeh3Navigations)
+                    .WithMany(p => p.DepartIdVeh3Navigations)
                     .HasForeignKey(d => d.IdVeh3)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("fk_dep_veh3");
-            });
-
-            modelBuilder.Entity<DepartPid>(entity =>
-            {
-                entity.ToTable("depart_pid");
-
-                entity.HasIndex(e => new { e.IdVeh, e.Date, e.Route, e.Line }, "unique_route")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(16)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.ActDate)
-                    .HasColumnType("timestamp")
-                    .HasColumnName("act_date")
-                    .HasDefaultValueSql("current_timestamp()");
-
-                entity.Property(e => e.Date)
-                    .HasColumnType("date")
-                    .HasColumnName("date");
-
-                entity.Property(e => e.Delay)
-                    .HasColumnType("int(2)")
-                    .HasColumnName("delay");
-
-                entity.Property(e => e.FinalStation)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("final_station");
-
-                entity.Property(e => e.IdVeh)
-                    .IsRequired()
-                    .HasMaxLength(36)
-                    .HasColumnName("id_veh")
-                    .UseCollation("utf8_unicode_ci")
-                    .HasCharSet("utf8");
-
-                entity.Property(e => e.LastStation)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("last_station");
-
-                entity.Property(e => e.Line)
-                    .IsRequired()
-                    .HasMaxLength(6)
-                    .HasColumnName("line")
-                    .UseCollation("utf8_unicode_ci")
-                    .HasCharSet("utf8");
-
-                entity.Property(e => e.Route)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("route");
-
-                entity.Property(e => e.StartDate)
-                    .HasColumnType("timestamp")
-                    .HasColumnName("start_date");
-
-                entity.Property(e => e.StartStation)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("start_station");
-
-                entity.Property(e => e.WasIn).HasColumnName("was_in");
             });
 
             modelBuilder.Entity<Depot>(entity =>

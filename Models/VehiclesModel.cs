@@ -216,7 +216,7 @@ namespace mpvv2.Models
                 " d.line, d.start_date AS s_date, (SELECT s.name FROM stop s WHERE s.id = d.final_station) AS final_station,"+
                 " d.delay,(SELECT s.name FROM stop s WHERE s.id = d.last_station) AS last_station,"+
                 " (SELECT s.name FROM stop s WHERE s.id = d.start_station) AS start_station, d.route, d.id_veh AS id_veh,d.act_date AS a_date"+
-                " FROM depart_odis d"+
+                " FROM depart d"+
                 " WHERE id_veh = @idVehicle AND date = @date"+
                 " ORDER BY act_date DESC"+
                 " LIMIT @offsetInt, @offsetCountInt;";
@@ -368,7 +368,7 @@ namespace mpvv2.Models
             string query =
                 "SELECT COUNT(v.id) AS departs, v.id, v.part, v.long_reg_num, v.reg_num,c.name AS carrier_name,v.manufac_year,m.name AS manufacturer_name, " +
                 "u.name AS vehicle_type,v.air_condition,UNIX_TIMESTAMP(v.last_seen) AS last_seen"+
-                " FROM vehicle v LEFT JOIN depart_odis d ON (v.id = d.id_veh) LEFT JOIN veh_up_type u ON (u.id = v.id_vut)" +
+                " FROM vehicle v LEFT JOIN depart d ON (v.id = d.id_veh) LEFT JOIN veh_up_type u ON (u.id = v.id_vut)" +
                 " INNER JOIN veh_type t ON(t.id=u.id_vet) INNER JOIN manufacturer m ON (m.id = t.id_man)" +
                 " LEFT JOIN depot e ON (e.id = v.id_dep) INNER JOIN carrier c ON (e.id_car = c.id)"+
                 whereQuery+
@@ -494,7 +494,7 @@ namespace mpvv2.Models
                 "v.manufac_year,v.air_condition, d.date, d.line, UNIX_TIMESTAMP(d.start_date) AS s_date, (SELECT s.name FROM stop s WHERE s.id = d.final_station) AS final_station,"+
                 "d.delay,(SELECT s.name FROM stop s WHERE s.id = d.last_station) AS last_station,"+
                 "(SELECT s.name FROM stop s WHERE s.id = d.start_station) AS start_station, d.route, v.id AS id_veh, UNIX_TIMESTAMP(d.act_date) AS a_date"+
-                " FROM depart_odis d INNER JOIN vehicle v ON (v.id = d.id_veh) LEFT JOIN veh_up_type u ON (u.id = v.id_vut)"+
+                " FROM depart d INNER JOIN vehicle v ON (v.id = d.id_veh) LEFT JOIN veh_up_type u ON (u.id = v.id_vut)"+
                 " INNER JOIN veh_type t ON(t.id=u.id_vet) INNER JOIN manufacturer m ON (m.id = t.id_man) LEFT JOIN depot e ON (e.id = v.id_dep) INNER JOIN carrier c ON (e.id_car = c.id)"+
                 whereQuery+
                 " ORDER BY act_date DESC, start_date DESC"+

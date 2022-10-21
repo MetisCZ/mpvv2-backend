@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "90GN3leu8WyF1r5n6qcClZD+d14VJp2WqLvvTgKu6vrsF+3+EnKvUzO3vUt+wPZwGkstVeBB+v6VfgStVIwVTw==",
+  "dgSpecHash": "nRmAGJOUmPae3YrKLlg9JVnJ8C94c1CveNRs1bGiCACiRyuRnT2Cw9UNYtQRz3KyKlr+3v11HlhVx7nD/8p14A==",
   "success": true,
   "projectFilePath": "C:\\Users\\jakub\\Documents\\PRG\\C#\\mpvv2\\mpvv2\\mpvv2.csproj",
   "expectedPackageFiles": [
@@ -56,7 +56,7 @@
     "C:\\Users\\jakub\\.nuget\\packages\\system.text.encoding.codepages\\4.4.0\\system.text.encoding.codepages.4.4.0.nupkg.sha512",
     "C:\\Users\\jakub\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
     "C:\\Users\\jakub\\.nuget\\packages\\system.windows.extensions\\6.0.2-mauipre.1.22054.8\\system.windows.extensions.6.0.2-mauipre.1.22054.8.nupkg.sha512",
-    "C:\\Users\\jakub\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
+    "C:\\Users\\jakub\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
   ],
   "logs": []
 }

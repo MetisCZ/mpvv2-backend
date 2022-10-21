@@ -183,7 +183,7 @@ namespace mpvv2.Models
                     if (veh != null)
                     {
                         veh.LastSeen = DateTime.Now;
-                        var depart = context.DepartOdis.FirstOrDefault(d =>
+                        var depart = context.Depart.FirstOrDefault(d =>
                             d.IdVeh == veh.Id && d.Date.Day == dateNow.Day && d.Date.Month == dateNow.Month && d.Date.Year == dateNow.Year && d.Line == line && d.Route == route);
                         int toId = 1;
                         int fromId = 1;
@@ -200,7 +200,7 @@ namespace mpvv2.Models
                             if (isEcho)
                                 echo += "-NewDepart";
                             var set = GetVehiclesInSet(veh.Id);
-                            DepartOdis dep = new DepartOdis()
+                            Depart dep = new Depart()
                             {
                                 IdVeh = veh.Id,
                                 Line = line,
@@ -247,7 +247,7 @@ namespace mpvv2.Models
                                     }
                                 }
                             }
-                            context.DepartOdis.Add(dep);
+                            context.Depart.Add(dep);
                         }
                         else
                         {

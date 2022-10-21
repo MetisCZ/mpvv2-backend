@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace mpvv2.DbModels
 {
-    public partial class DepartOdis
+    public partial class Depart
     {
         public long Id { get; set; }
         public string IdVeh { get; set; }

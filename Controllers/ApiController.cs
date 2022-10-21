@@ -13,7 +13,7 @@ namespace mpvv2.Controllers
         public ActionResult Index()
         {
             var context = new mpvContext();
-            var res = (from d in context.DepartOdis
+            var res = (from d in context.Depart
                 join v in context.Vehicles on d.IdVeh equals v.Id
                 where v.LongRegNum == "410284"
                 select new { v, d }).ToList();
@@ -35,7 +35,7 @@ namespace mpvv2.Controllers
                 Vehicle veh = context.Vehicles.FirstOrDefault(v => v.Id == vehId);
                 if(veh == null)
                     return Content("{\"success\":\"false\",\"data\":\"Invalid vehicle id\"}");
-                DepartOdis dep = context.DepartOdis.Where(d => d.IdVeh == vehId || d.IdVeh2 == vehId || d.IdVeh3 == vehId).OrderByDescending(d=>d.ActDate).FirstOrDefault();
+                Depart dep = context.Depart.Where(d => d.IdVeh == vehId || d.IdVeh2 == vehId || d.IdVeh3 == vehId).OrderByDescending(d=>d.ActDate).FirstOrDefault();
                 if (dep != null)
                     veh.LastSeen = dep.ActDate;
             }
@@ -69,8 +69,8 @@ namespace mpvv2.Controllers
             using (var context = new mpvContext())
             {
                 long idD = long.Parse(idDep);
-                DepartOdis dep =
-                    context.DepartOdis.FirstOrDefault(d => d.IdVeh.Equals(idVeh) && d.Id == idD);
+                Depart dep =
+                    context.Depart.FirstOrDefault(d => d.IdVeh.Equals(idVeh) && d.Id == idD);
                 Vehicle veh = context.Vehicles.FirstOrDefault(v => v.Id.Equals(idVeh));
                 if(dep == null || veh == null)
                     return Content("{\"success\": false,\"message\": \"Invalid data provided. Please try again later\"}");
@@ -99,7 +99,7 @@ namespace mpvv2.Controllers
             using (var db = new Database())
             {
                 string sql =
-                    "SELECT d.line,d.route, v.reg_num, d.act_date, d.id AS id_dep, v.id AS id_veh FROM depart_odis d INNER JOIN vehicle v ON (d.id_veh = v.id) WHERE v.id = @vehicle ORDER BY d.act_date DESC LIMIT 1;";
+                    "SELECT d.line,d.route, v.reg_num, d.act_date, d.id AS id_dep, v.id AS id_veh FROM depart d INNER JOIN vehicle v ON (d.id_veh = v.id) WHERE v.id = @vehicle ORDER BY d.act_date DESC LIMIT 1;";
                 Dictionary<string, dynamic> parameters = new Dictionary<string, dynamic>();
                 parameters.Add("@vehicle", vehicle);
                 var res = db.Select(sql, parameters);
@@ -122,7 +122,7 @@ namespace mpvv2.Controllers
             using (var db = new Database())
             {
                 string sql =
-                    "SELECT d.line,d.route, v.reg_num, d.act_date, d.id AS id_dep, v.id AS id_veh FROM depart_odis d INNER JOIN vehicle v ON (d.id_veh = v.id) WHERE d.line = @line AND d.route = @route AND d.date = @date AND v.id = @vehicle LIMIT 1;";
+                    "SELECT d.line,d.route, v.reg_num, d.act_date, d.id AS id_dep, v.id AS id_veh FROM depart d INNER JOIN vehicle v ON (d.id_veh = v.id) WHERE d.line = @line AND d.route = @route AND d.date = @date AND v.id = @vehicle LIMIT 1;";
                 Dictionary<string, dynamic> parameters = new Dictionary<string, dynamic>();
                 parameters.Add("@vehicle", vehicle);
                 parameters.Add("@line", line);

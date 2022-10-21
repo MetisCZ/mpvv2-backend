@@ -13,7 +13,7 @@ namespace mpvv2.Models.DBModels
             Vehicle veh = context.Vehicles.FirstOrDefault(v => v.Id == vehId);
             if (veh != null)
             {
-                DepartOdis dep = context.DepartOdis
+                Depart dep = context.Depart
                     .Where(d => d.IdVeh == vehId || d.IdVeh2 == vehId || d.IdVeh3 == vehId)
                     .OrderByDescending(d => d.ActDate).FirstOrDefault();
                 
@@ -23,15 +23,15 @@ namespace mpvv2.Models.DBModels
                     veh.LastSeen = null;
 
                 int departs = 0;
-                var query = context.DepartOdis.Where(d => d.IdVeh == vehId).GroupBy(d => d.IdVeh).Select(g => new {name = g.Key, count = g.Count()}).FirstOrDefault();
+                var query = context.Depart.Where(d => d.IdVeh == vehId).GroupBy(d => d.IdVeh).Select(g => new {name = g.Key, count = g.Count()}).FirstOrDefault();
                 if (query != null)
                     departs = query.count;
                 
-                var query2 = context.DepartOdis.Where(d => d.IdVeh2 == vehId).GroupBy(d => d.IdVeh2).Select(g => new {name = g.Key, count = g.Count()}).FirstOrDefault();
+                var query2 = context.Depart.Where(d => d.IdVeh2 == vehId).GroupBy(d => d.IdVeh2).Select(g => new {name = g.Key, count = g.Count()}).FirstOrDefault();
                 if (query2 != null)
                     departs += query2.count;
                 
-                var query3 = context.DepartOdis.Where(d => d.IdVeh3 == vehId).GroupBy(d => d.IdVeh3).Select(g => new {name = g.Key, count = g.Count()}).FirstOrDefault();
+                var query3 = context.Depart.Where(d => d.IdVeh3 == vehId).GroupBy(d => d.IdVeh3).Select(g => new {name = g.Key, count = g.Count()}).FirstOrDefault();
                 if (query3 != null)
                     departs += query3.count;
                 
@@ -45,7 +45,7 @@ namespace mpvv2.Models.DBModels
 
         public static bool UpdateDepartsSet(string vehId, string vehId2, string vehId3, DateTime from, DateTime to, mpvContext context)
         {
-            var departs = context.DepartOdis.Where(d => d.IdVeh == vehId && d.Date.Date.CompareTo(from.Date) >= 0 && d.Date.Date.CompareTo(to.Date) <= 0).ToList();
+            var departs = context.Depart.Where(d => d.IdVeh == vehId && d.Date.Date.CompareTo(from.Date) >= 0 && d.Date.Date.CompareTo(to.Date) <= 0).ToList();
 
             List<string> vehsToUpdate = new List<string>();
             foreach (var depart in departs)
@@ -77,7 +77,7 @@ namespace mpvv2.Models.DBModels
             Vehicle veh = context.Vehicles.FirstOrDefault(v => v.Id == vehId);
             if (veh != null)
             {
-                DepartOdis dep = context.DepartOdis.Where(d => d.IdVeh == vehId || d.IdVeh2 == vehId || d.IdVeh3 == vehId).OrderByDescending(d=>d.ActDate).FirstOrDefault();
+                Depart dep = context.Depart.Where(d => d.IdVeh == vehId || d.IdVeh2 == vehId || d.IdVeh3 == vehId).OrderByDescending(d=>d.ActDate).FirstOrDefault();
                 if (dep != null)
                 {
                     veh.LastSeen = dep.ActDate;

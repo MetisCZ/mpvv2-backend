@@ -9,9 +9,9 @@ namespace mpvv2.DbModels
     {
         public Vehicle()
         {
-            DepartOdisIdVeh2Navigations = new HashSet<DepartOdis>();
-            DepartOdisIdVeh3Navigations = new HashSet<DepartOdis>();
-            DepartOdisIdVehNavigations = new HashSet<DepartOdis>();
+            DepartIdVeh2Navigations = new HashSet<Depart>();
+            DepartIdVeh3Navigations = new HashSet<Depart>();
+            DepartIdVehNavigations = new HashSet<Depart>();
             PhotoVehs = new HashSet<PhotoVeh>();
             RegNumHistories = new HashSet<RegNumHistory>();
             TypeDetails = new HashSet<TypeDetail>();
@@ -55,9 +55,9 @@ namespace mpvv2.DbModels
         public virtual Region IdRegNavigation { get; set; }
         public virtual VehUpType IdVutNavigation { get; set; }
         public virtual VehSet VehSetIdVeh1Navigation { get; set; }
-        public virtual ICollection<DepartOdis> DepartOdisIdVeh2Navigations { get; set; }
-        public virtual ICollection<DepartOdis> DepartOdisIdVeh3Navigations { get; set; }
-        public virtual ICollection<DepartOdis> DepartOdisIdVehNavigations { get; set; }
+        public virtual ICollection<Depart> DepartIdVeh2Navigations { get; set; }
+        public virtual ICollection<Depart> DepartIdVeh3Navigations { get; set; }
+        public virtual ICollection<Depart> DepartIdVehNavigations { get; set; }
         public virtual ICollection<PhotoVeh> PhotoVehs { get; set; }
         public virtual ICollection<RegNumHistory> RegNumHistories { get; set; }
         public virtual ICollection<TypeDetail> TypeDetails { get; set; }
